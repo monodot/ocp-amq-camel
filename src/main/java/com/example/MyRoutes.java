@@ -45,6 +45,9 @@ public class MyRoutes extends RouteBuilder {
                 .setBody(simple("Hello, world!"))
                 .log("Pushing message to ActiveMQ")
                 .to(resultEndpoint);
+
+        from(resultEndpoint)
+                .log("Dequeued message - ${body}");
     }
 
 }
